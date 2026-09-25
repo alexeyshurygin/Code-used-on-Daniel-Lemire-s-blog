@@ -1,10 +1,16 @@
-# Plots the integer-to-string results from results_m4max.txt as a bar chart.
+# Plots the integer-to-string results as a bar chart.
+# Usage: python plot.py [results.txt] [output.png] [subtitle]
+# (defaults: results_m4max.txt, strings.png, the Apple M4 Max subtitle)
 import re
+import sys
 import matplotlib.pyplot as plt
 from matplotlib.patches import PathPatch
 from matplotlib.path import Path
 
-text = open("results_m4max.txt").read()
+RESULTS = sys.argv[1] if len(sys.argv) > 1 else "results_m4max.txt"
+OUTPUT = sys.argv[2] if len(sys.argv) > 2 else "strings.png"
+SUBTITLE = sys.argv[3] if len(sys.argv) > 3 else "Apple M4 Max, nanoseconds per string, lower is better"
+text = open(RESULTS).read()
 
 def ns(section, op):
     block = text[text.index(section):]
@@ -12,7 +18,8 @@ def ns(section, op):
 
 # one colour per language, in the palette's fixed order
 COLORS = {"C++": "#2a78d6", "Nim": "#eb6834", "Go": "#1baf7a",
-          "JavaScript": "#eda100", "Rust": "#e87ba4", "Python": "#008300"}
+          "JavaScript": "#eda100", "Rust": "#e87ba4", "Python": "#008300",
+          "Java": "#4a3aa7"}
 
 # (language, tick label, measured value)
 data = [
@@ -25,11 +32,13 @@ data = [
     ("Rust", "Rust\nto_string()", ns("Rust", "i.to_string()")),
     ("Python", "Python\nstr(i)", ns("Python", "str(i)")),
 ]
+if "Java" in text:
+    data.append(("Java", "Java\ntoString(i)", ns("Java", "Integer.toString(i)")))
 data.sort(key=lambda d: d[2])  # fastest on the left
 
 SURFACE, INK, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"
-plt.rcParams.update({"font.family": "Avenir Next", "font.size": 17})
-fig, ax = plt.subplots(figsize=(12, 7), dpi=200)
+plt.rcParams.update({"font.family": ["Avenir Next", "DejaVu Sans"], "font.size": 17})
+fig, ax = plt.subplots(figsize=(12 + 1.5 * (len(data) - 8), 7), dpi=200)
 fig.patch.set_facecolor(SURFACE)
 ax.set_facecolor(SURFACE)
 
@@ -64,6 +73,6 @@ ax.axhline(0, color=MUTED, lw=1)
 fig.tight_layout(rect=(0, 0, 1, 0.86))
 fig.text(0.012, 0.955, "Converting an integer to a new string", ha="left", va="top",
          fontsize=26, fontweight="bold", color=INK)
-fig.text(0.012, 0.895, "Apple M4 Max, nanoseconds per string, lower is better",
+fig.text(0.012, 0.895, SUBTITLE,
          ha="left", va="top", fontsize=18, color=MUTED)
-fig.savefig("strings.png", facecolor=SURFACE)
+fig.savefig(OUTPUT, facecolor=SURFACE)

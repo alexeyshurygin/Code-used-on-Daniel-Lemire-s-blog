@@ -1,0 +1,48 @@
+# -XX:+UseG1GC
+Java 21.0.10 (OpenJDK 64-Bit Server VM, G1 Young Generation)
+Integer.toString(i)        16.55 ns/string      60.4 M/s   (check 8192)
+"" + i                     16.41 ns/string      60.9 M/s   (check 8192)
+# -XX:+UseParallelGC
+Java 21.0.10 (OpenJDK 64-Bit Server VM, PS MarkSweep)
+Integer.toString(i)        11.59 ns/string      86.3 M/s   (check 8192)
+"" + i                     11.76 ns/string      85.0 M/s   (check 8192)
+# -XX:+UseSerialGC
+Java 21.0.10 (OpenJDK 64-Bit Server VM, Copy)
+Integer.toString(i)        10.98 ns/string      91.1 M/s   (check 8192)
+"" + i                     11.04 ns/string      90.5 M/s   (check 8192)
+# -XX:+UseZGC
+Java 21.0.10 (OpenJDK 64-Bit Server VM, ZGC Cycles)
+Integer.toString(i)        12.23 ns/string      81.8 M/s   (check 8192)
+"" + i                     14.24 ns/string      70.2 M/s   (check 8192)
+# -XX:+UseG1GC
+Java 25.0.4.1 (OpenJDK 64-Bit Server VM, G1 Young Generation)
+Integer.toString(i)        14.16 ns/string      70.6 M/s   (check 8192)
+"" + i                     14.06 ns/string      71.1 M/s   (check 8192)
+# -XX:+UseParallelGC
+Java 25.0.4.1 (OpenJDK 64-Bit Server VM, PS MarkSweep)
+Integer.toString(i)         9.84 ns/string     101.6 M/s   (check 8192)
+"" + i                     10.08 ns/string      99.2 M/s   (check 8192)
+# -XX:+UseSerialGC
+Java 25.0.4.1 (OpenJDK 64-Bit Server VM, Copy)
+Integer.toString(i)         8.58 ns/string     116.5 M/s   (check 8192)
+"" + i                      8.05 ns/string     124.3 M/s   (check 8192)
+# -XX:+UseZGC
+Java 25.0.4.1 (OpenJDK 64-Bit Server VM, ZGC Minor Cycles)
+Integer.toString(i)        11.08 ns/string      90.2 M/s   (check 8192)
+"" + i                     14.39 ns/string      69.5 M/s   (check 8192)
+# -XX:+UseG1GC
+Java 27 (OpenJDK 64-Bit Server VM, G1 Young Generation)
+Integer.toString(i)        10.39 ns/string      96.2 M/s   (check 8192)
+"" + i                     10.26 ns/string      97.4 M/s   (check 8192)
+# -XX:+UseParallelGC
+Java 27 (OpenJDK 64-Bit Server VM, PS MarkSweep)
+Integer.toString(i)        10.98 ns/string      91.1 M/s   (check 8192)
+"" + i                     10.75 ns/string      93.0 M/s   (check 8192)
+# -XX:+UseSerialGC
+Java 27 (OpenJDK 64-Bit Server VM, Copy)
+Integer.toString(i)        12.14 ns/string      82.4 M/s   (check 8192)
+"" + i                     12.00 ns/string      83.3 M/s   (check 8192)
+# -XX:+UseZGC
+Java 27 (OpenJDK 64-Bit Server VM, ZGC Minor Cycles)
+Integer.toString(i)        12.05 ns/string      83.0 M/s   (check 8192)
+"" + i                     11.86 ns/string      84.3 M/s   (check 8192)

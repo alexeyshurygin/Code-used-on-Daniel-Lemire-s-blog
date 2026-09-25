@@ -8,6 +8,7 @@ $CXX -O3 -std=c++20 -o bench_cpp bench.cpp
 (cd rust && cargo build --release -q)
 go build -o bench_go bench.go
 nim c -d:danger --hints:off -o:bench_nim bench.nim > /dev/null
+${JAVA_HOME:+$JAVA_HOME/bin/}javac -d java_classes Bench.java
 $PIN ${PYTHON:-python3} bench.py
 $PIN node bench.js
 $PIN bun bench.js
@@ -15,3 +16,4 @@ $PIN ./bench_cpp
 $PIN ./rust/target/release/strbench
 $PIN ./bench_go
 $PIN ./bench_nim
+$PIN ${JAVA_HOME:+$JAVA_HOME/bin/}java -cp java_classes Bench
