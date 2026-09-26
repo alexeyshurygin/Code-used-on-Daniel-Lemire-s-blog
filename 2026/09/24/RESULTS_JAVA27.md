@@ -14,6 +14,11 @@ static void fromInt(int n) {
 
 It also times `"" + i` (string concatenation), which runs at the same speed.
 
+`Bench.java` now keeps the elapsed times as `long` and converts only at the final division. The
+numbers below were measured with the earlier `double` version. Ten interleaved launches of each
+version give the same result within noise, with medians of 10.8 ns (`long`) and 10.6 ns
+(`double`). See `why_java_beats_cpp/timing_unpinned.txt`.
+
 ## Machine and versions
 
 A cloud VM with 4 vCPUs of an Intel Xeon @ 2.1 GHz, running Ubuntu 24.04. Runs were not
@@ -90,6 +95,17 @@ JDK 27 has two GC-related JEPs, and neither changes this result:
 Serial (and Parallel) got *slower* from JDK 25 to 26: Serial went from 8.1-8.3 ns to 11.4 ns.
 This is not a vendor-build artifact, because Oracle's JDK 25.0.2 build matches the Temurin one.
 The cause has not been investigated.
+## Why Java beats C++ here
+
+See [`why_java_beats_cpp/README.md`](why_java_beats_cpp/README.md) for the full investigation,
+with machine code, instruction counts and isolating experiments. In short, the digit conversion
+in C++ is faster than Java's. What costs C++ is `std::to_string` returning a temporary that then
+gets move-assigned into the vector slot. With libstdc++ that means a `memset` call (zero-filling
+the new string) and a `memcpy` call (copying the SSO bytes) for every string. HotSpot inlines the
+whole `Integer.toString`, writes the digits once into a bump-allocated `byte[]`, and stores a
+4-byte reference. Writing the digits directly into the vector slot (`resize_and_overwrite`) brings
+C++ down to 6.0 ns.
+
 ## Other observations
 
 * The ranking of the other languages is similar to the M4 Max, except that C++ has a much

@@ -1,0 +1,319 @@
+# JDK 25.0.4.1 (-XX:+UseG1GC) C2 code for Bench::fromInt, hsdis/intel syntax
+5880: mov    DWORD PTR [rsp-0x14000],eax
+5887: push   rbp
+5888: sub    rsp,0x30
+588c: cmp    DWORD PTR [r15+0x20],0x0
+5894: jne    0x00007f8317ed5dc1
+589a: mov    edx,esi
+589c: test   esi,esi
+589e: jle    0x00007f8317ed5c7c
+58a4: xor    esi,esi
+58a6: xor    r9d,r9d
+58a9: xor    ebx,ebx
+58ab: jmp    0x00007f8317ed5b52
+58b0: mov    esi,r10d
+58b3: mov    r11d,ecx
+58b6: mov    rdi,QWORD PTR [r15+0x30]
+58ba: lea    ecx,[r11-0x2]
+58be: movsxd r10,esi
+58c1: imul   r10,r10,0x51eb851f
+58c8: sar    r10,0x25
+58cc: mov    r10d,r10d
+58cf: movsxd rax,ecx
+58d2: mov    r8d,esi
+58d5: sar    r8d,0x1f
+58d9: sub    r10d,r8d
+58dc: imul   r8d,r10d,0x64
+58e0: sub    r8d,esi
+58e3: and    r8d,0x7f
+58e7: movabs rsi,0x72a201010              ;   {oop([S{0x000000072a201010})}
+58f1: movsx  esi,WORD PTR [rsi+r8*2+0x10]
+58f7: mov    WORD PTR [r13+rax*1+0x10],si ; ImmutableOopMap {r13=Oop }
+58fd: test   DWORD PTR [rdi],eax          ;   {poll}
+58ff: cmp    r10d,0xffffff9c
+5903: jle    0x00007f8317ed58b0
+5905: add    r11d,0xfffffffd
+5909: cmp    r10d,0xfffffff6
+590d: jg     0x00007f8317ed5a64
+5913: movsxd r11,r11d
+5916: mov    rdi,r13
+5919: jmp    0x00007f8317ed5a38
+591e: mov    r11d,0x2
+5924: inc    r11d
+5927: mov    r13,QWORD PTR [r15+0x1c8]
+592e: movsxd rbp,r11d
+5931: lea    rcx,[rbp+0x17]
+5935: mov    r10,rcx
+5938: and    r10,0xfffffffffffffff8
+593c: mov    r8,r13
+593f: add    r8,r10
+5942: cmp    r8,QWORD PTR [r15+0x1d8]
+5949: jae    0x00007f8317ed5bf4
+594f: mov    QWORD PTR [r15+0x1c8],r8
+5956: prefetchw BYTE PTR [r8+0x100]
+595e: mov    QWORD PTR [r13+0x0],0x1
+5966: prefetchw BYTE PTR [r8+0x140]
+596e: prefetchw BYTE PTR [r8+0x180]
+5976: mov    DWORD PTR [r13+0x8],0x173550 ;   {metadata({type array byte})}
+597e: mov    DWORD PTR [r13+0xc],r11d
+5982: shr    rcx,0x3
+5986: add    rcx,0xfffffffffffffffe
+598a: mov    rdi,r13
+598d: add    rdi,0x10
+5991: xor    rax,rax
+5994: cmp    rcx,0x8
+5998: jg     0x00007f8317ed59aa
+599a: dec    rcx
+599d: js     0x00007f8317ed5a0c
+599f: mov    QWORD PTR [rdi+rcx*8],rax
+59a3: dec    rcx
+59a6: jge    0x00007f8317ed599f
+59a8: jmp    0x00007f8317ed5a0c
+59aa: vpxord zmm0,zmm0,zmm0
+59b0: jmp    0x00007f8317ed59bf
+59b5: vmovdqu64 ZMMWORD PTR [rdi],zmm0
+59bb: add    rdi,0x40
+59bf: sub    rcx,0x8
+59c3: jge    0x00007f8317ed59b5
+59c5: add    rcx,0x8
+59c9: je     0x00007f8317ed5a0c
+59cb: mov    rax,0xffffffffffffffff
+59d2: bzhi   rax,rax,rcx
+59d7: kmovq  k7,rax
+59dc: vmovdqu64 ZMMWORD PTR [rdi]{k7},zmm0
+59e2: jmp    0x00007f8317ed5a0c
+59e7: add    rdi,0x20
+59eb: sub    rcx,0x4
+59ef: add    rcx,0x4
+59f3: jle    0x00007f8317ed5a0c
+59f5: mov    rax,0xffffffffffffffff
+59fc: bzhi   rax,rax,rcx
+5a01: kmovq  k7,rax
+5a06: vmovdqu64 YMMWORD PTR [rdi]{k7},ymm0
+5a0c: cmp    esi,0xffffff9c
+5a0f: jle    0x00007f8317ed58b6
+5a15: cmp    esi,0xfffffff6
+5a18: jle    0x00007f8317ed5a25
+5a1a: mov    r10d,esi
+5a1d: mov    r8d,0xf
+5a23: jmp    0x00007f8317ed5a6a
+5a25: mov    rdi,r13
+5a28: add    rdi,rbp
+5a2b: mov    r10d,esi
+5a2e: mov    ecx,r11d
+5a31: mov    r11,0xffffffffffffffff
+5a38: add    ecx,0xfffffffe
+5a3b: movsxd r8,ecx
+5a3e: neg    r10d
+5a41: and    r10d,0x7f
+5a45: movabs rcx,0x72a201010              ;   {oop([S{0x000000072a201010})}
+5a4f: movsx  ecx,WORD PTR [rcx+r10*2+0x10]
+5a55: mov    BYTE PTR [r13+r8*1+0x10],cl
+5a5a: sar    ecx,0x8
+5a5d: mov    BYTE PTR [rdi+r11*1+0x10],cl
+5a62: jmp    0x00007f8317ed5a7f
+5a64: mov    r8d,0x10
+5a6a: mov    ecx,0x30
+5a6f: sub    ecx,r10d
+5a72: movsxd r10,r11d
+5a75: mov    r11,r13
+5a78: add    r11,r10
+5a7b: mov    BYTE PTR [r11+r8*1],cl
+5a7f: mov    rax,QWORD PTR [r15+0x1c8]
+5a86: mov    r10,rax
+5a89: add    r10,0x18
+5a8d: cmp    r10,QWORD PTR [r15+0x1d8]
+5a94: jae    0x00007f8317ed5c41
+5a9a: mov    QWORD PTR [r15+0x1c8],r10
+5aa1: prefetchw BYTE PTR [r10+0x100]
+5aa9: mov    QWORD PTR [rax],0x1
+5ab0: mov    DWORD PTR [rax+0x8],0x176520 ;   {metadata('java/lang/String')}
+5ab7: mov    DWORD PTR [rax+0xc],r12d
+5abb: mov    r10,rax
+5abe: add    r10,0x10
+5ac2: vpxord zmm0,zmm0,zmm0
+5ac8: vmovq  QWORD PTR [r10],xmm0
+5acd: mov    r11,r13
+5ad0: shr    r11,0x3
+5ad4: mov    DWORD PTR [rax+0x14],r11d
+5ad8: mov    r10,QWORD PTR [r15+0x30]
+5adc: movabs rdi,0x72a200000              ;   {oop(a 'java/lang/String'[1024] {0x000000072a200000})}
+5ae6: lea    r8,[rdi+rbx*4+0x10]
+5aeb: cmp    BYTE PTR [r15+0x48],0x0
+5af0: jne    0x00007f8317ed5cbe
+5af6: mov    rcx,rax
+5af9: shr    rcx,0x3
+5afd: mov    DWORD PTR [r8],ecx
+5b00: mov    r11,r8
+5b03: xor    r11,rax
+5b06: shr    r11,0x15
+5b0a: je     0x00007f8317ed5b2e
+5b10: mov    r11,r8
+5b13: shr    r11,0x9
+5b17: movabs rcx,0x7f830bd50000
+5b21: add    r11,rcx
+5b24: cmp    BYTE PTR [r11],0x2
+5b28: jne    0x00007f8317ed5d3d
+5b2e: lea    r11d,[r9+0x1]                ; ImmutableOopMap {}
+5b32: test   DWORD PTR [r10],eax          ;   {poll}
+5b35: cmp    r11d,edx
+5b38: jge    0x00007f8317ed5c7c
+5b3e: mov    esi,0xffffffff
+5b43: sub    esi,r9d
+5b46: mov    ebx,r11d
+5b49: and    ebx,0x3ff
+5b4f: mov    r9d,r11d
+5b52: cmp    esi,0xfffffff6
+5b55: jle    0x00007f8317ed5b62
+5b57: mov    r11d,0x1
+5b5d: jmp    0x00007f8317ed5927
+5b62: cmp    esi,0xffffff9c
+5b65: jle    0x00007f8317ed5b72
+5b67: mov    r11d,0x2
+5b6d: jmp    0x00007f8317ed5927
+5b72: cmp    esi,0xfffffc18
+5b78: jg     0x00007f8317ed591e
+5b7e: cmp    esi,0xffffd8f0
+5b84: jle    0x00007f8317ed5b91
+5b86: mov    r11d,0x4
+5b8c: jmp    0x00007f8317ed5927
+5b91: cmp    esi,0xfffe7960
+5b97: jle    0x00007f8317ed5ba4
+5b99: mov    r11d,0x4
+5b9f: jmp    0x00007f8317ed5924
+5ba4: cmp    esi,0xfff0bdc0
+5baa: jle    0x00007f8317ed5bb7
+5bac: mov    r11d,0x6
+5bb2: jmp    0x00007f8317ed5927
+5bb7: cmp    esi,0xff676980
+5bbd: jle    0x00007f8317ed5bca
+5bbf: mov    r11d,0x6
+5bc5: jmp    0x00007f8317ed5924
+5bca: cmp    esi,0xfa0a1f00
+5bd0: jle    0x00007f8317ed5bdd
+5bd2: mov    r11d,0x8
+5bd8: jmp    0x00007f8317ed5927
+5bdd: cmp    esi,0xc4653600
+5be3: jle    0x00007f8317ed5c8c
+5be9: mov    r11d,0x8
+5bef: jmp    0x00007f8317ed5924
+5bf4: mov    DWORD PTR [rsp+0x10],r11d
+5bf9: mov    DWORD PTR [rsp+0xc],ebx
+5bfd: mov    DWORD PTR [rsp+0x8],r9d
+5c02: mov    DWORD PTR [rsp+0x4],esi
+5c06: mov    DWORD PTR [rsp],edx
+5c09: movabs rsi,0x65173550               ;   {metadata({type array byte})}
+5c13: mov    edx,r11d
+5c16: nop
+5c17: call   0x00007f83179d0fe0           ; ImmutableOopMap {}
+5c1c: nop    DWORD PTR [rax+rax*1+0x2000494];   {post_call_nop}
+5c24: mov    edx,DWORD PTR [rsp]
+5c27: mov    esi,DWORD PTR [rsp+0x4]
+5c2b: mov    r9d,DWORD PTR [rsp+0x8]
+5c30: mov    ebx,DWORD PTR [rsp+0xc]
+5c34: mov    r11d,DWORD PTR [rsp+0x10]
+5c39: mov    r13,rax
+5c3c: jmp    0x00007f8317ed5a0c
+5c41: mov    QWORD PTR [rsp+0x8],r13
+5c46: mov    DWORD PTR [rsp+0x4],ebx
+5c4a: mov    DWORD PTR [rsp],r9d
+5c4e: mov    ebp,edx
+5c50: movabs rsi,0x65176520               ;   {metadata('java/lang/String')}
+5c5a: nop
+5c5b: call   0x00007f83179d12e0           ; ImmutableOopMap {[8]=Oop }
+5c60: nop    DWORD PTR [rax+rax*1+0x30004d8];   {post_call_nop}
+5c68: mov    edx,ebp
+5c6a: mov    r9d,DWORD PTR [rsp]
+5c6e: mov    ebx,DWORD PTR [rsp+0x4]
+5c72: mov    r13,QWORD PTR [rsp+0x8]
+5c77: jmp    0x00007f8317ed5acd
+5c7c: add    rsp,0x30
+5c80: pop    rbp
+5c81: cmp    rsp,QWORD PTR [r15+0x28]     ;   {poll_return}
+5c85: ja     0x00007f8317ed5dab
+5c8b: ret    
+5c8c: mov    esi,0xffffff45
+5c91: mov    ebp,edx
+5c93: mov    DWORD PTR [rsp+0x4],ebx
+5c97: mov    DWORD PTR [rsp+0x8],r9d
+5c9c: data16 xchg ax,ax
+5c9f: call   0x00007f83179d15e0           ; ImmutableOopMap {}
+5ca4: nop    DWORD PTR [rax+rax*1+0x400051c];   {post_call_nop}
+5cac: mov    rsi,rax
+5caf: jmp    0x00007f8317ed5cb4
+5cb1: mov    rsi,rax
+5cb4: add    rsp,0x30
+5cb8: pop    rbp
+5cb9: jmp    0x00007f8317a6b460           ;   {runtime_call C2 Runtime rethrow}
+5cbe: mov    ecx,DWORD PTR [r8]
+5cc1: shl    rcx,0x3
+5cc5: cmp    rcx,0x0
+5cc9: je     0x00007f8317ed5af6
+5ccf: mov    r11,QWORD PTR [r15+0x38]
+5cd3: test   r11,r11
+5cd6: je     0x00007f8317ed5cf0
+5cdc: sub    r11,0x8
+5ce0: mov    QWORD PTR [r15+0x38],r11
+5ce4: add    r11,QWORD PTR [r15+0x40]
+5ce8: mov    QWORD PTR [r11],rcx
+5ceb: jmp    0x00007f8317ed5af6
+5cf0: sub    rsp,0x30
+5cf4: mov    QWORD PTR [rsp+0x28],r10
+5cf9: mov    QWORD PTR [rsp+0x20],r8
+5cfe: mov    QWORD PTR [rsp+0x18],r9
+5d03: mov    QWORD PTR [rsp+0x10],rdx
+5d08: mov    QWORD PTR [rsp+0x8],rax
+5d0d: mov    rdi,rcx
+5d10: mov    rsi,r15
+5d13: call   0x00007f832d0b7230           ;   {runtime_call G1BarrierSetRuntime::write_ref_field_pre_entry(oopDesc*, JavaThread*)}
+5d18: mov    rax,QWORD PTR [rsp+0x8]
+5d1d: mov    rdx,QWORD PTR [rsp+0x10]
+5d22: mov    r9,QWORD PTR [rsp+0x18]
+5d27: mov    r8,QWORD PTR [rsp+0x20]
+5d2c: mov    r10,QWORD PTR [rsp+0x28]
+5d31: vzeroupper 
+5d34: add    rsp,0x30
+5d38: jmp    0x00007f8317ed5af6
+5d3d: lock add DWORD PTR [rsp-0x40],0x0
+5d43: cmp    BYTE PTR [r11],0x0
+5d47: je     0x00007f8317ed5b2e
+5d4d: mov    BYTE PTR [r11],0x0
+5d51: mov    rcx,QWORD PTR [r15+0x50]
+5d55: test   rcx,rcx
+5d58: je     0x00007f8317ed5d72
+5d5e: sub    rcx,0x8
+5d62: mov    QWORD PTR [r15+0x50],rcx
+5d66: add    rcx,QWORD PTR [r15+0x58]
+5d6a: mov    QWORD PTR [rcx],r11
+5d6d: jmp    0x00007f8317ed5b2e
+5d72: sub    rsp,0x20
+5d76: mov    QWORD PTR [rsp+0x18],r10
+5d7b: mov    QWORD PTR [rsp+0x10],r9
+5d80: mov    QWORD PTR [rsp+0x8],rdx
+5d85: mov    rdi,r11
+5d88: mov    rsi,r15
+5d8b: call   0x00007f832d0b7250           ;   {runtime_call G1BarrierSetRuntime::write_ref_field_post_entry(unsigned char volatile*, JavaThread*)}
+5d90: mov    rdx,QWORD PTR [rsp+0x8]
+5d95: mov    r9,QWORD PTR [rsp+0x10]
+5d9a: mov    r10,QWORD PTR [rsp+0x18]
+5d9f: vzeroupper 
+5da2: add    rsp,0x20
+5da6: jmp    0x00007f8317ed5b2e
+5dab: movabs r10,0x7f8317ed5c81           ;   {internal_word}
+5db5: mov    QWORD PTR [r15+0x538],r10
+5dbc: jmp    0x00007f8317989b60           ;   {runtime_call SafepointBlob}
+5dc1: call   Stub::method_entry_barrier   ;   {runtime_call Stub::method_entry_barrier}
+5dc6: jmp    0x00007f8317ed589a
+5dcb: hlt    
+5dcc: hlt    
+5dcd: hlt    
+5dce: hlt    
+5dcf: hlt    
+5dd0: jmp    0x00007f83179d18e0           ;   {runtime_call ExceptionBlob}
+5dd5: call   0x00007f8317ed5dda
+5dda: sub    QWORD PTR [rsp],0x5
+5ddf: jmp    0x00007f83179882e0           ;   {runtime_call DeoptimizationBlob}
+5de4: hlt    
+5de5: hlt    
+5de6: hlt    
+5de7: hlt    

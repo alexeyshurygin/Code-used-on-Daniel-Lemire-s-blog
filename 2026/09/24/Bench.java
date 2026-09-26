@@ -16,16 +16,16 @@ public class Bench {
   static void bench(String name, Case f) {
     final int N = 100_000_000;
     f.run(1_000_000); // warm up
-    double best = Double.MAX_VALUE;
+    long best = Long.MAX_VALUE;
     for (int r = 0; r < 5; r++) {
       long t0 = System.nanoTime();
       f.run(N);
-      double dt = System.nanoTime() - t0;
+      long dt = System.nanoTime() - t0;
       if (dt < best) best = dt;
     }
     int total = 0;
     for (String s : buf) total += s.length();
-    double ns = best / N;
+    double ns = (double) best / N;
     System.out.printf("%-24s %7.2f ns/string  %8.1f M/s   (check %d)%n",
                       name, ns, 1e3 / ns, total);
   }
