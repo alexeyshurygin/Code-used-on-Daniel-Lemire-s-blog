@@ -1,0 +1,42 @@
+# objdump of from_int in cpp_libcxx (bench.cpp -O3)
+0000000000001250 <from_int(unsigned long)>:
+    1250:	test   %rdi,%rdi
+    1253:	je     12ca <from_int(unsigned long)+0x7a>
+    1255:	push   %r15
+    1257:	push   %r14
+    1259:	push   %r12
+    125b:	push   %rbx
+    125c:	sub    $0x18,%rsp
+    1260:	mov    %rdi,%rbx
+    1263:	xor    %r14d,%r14d
+    1266:	mov    %rsp,%r15
+    1269:	jmp    128b <from_int(unsigned long)+0x3b>
+    126b:	nopl   0x0(%rax,%rax,1)
+    1270:	mov    0x10(%rsp),%rax
+    1275:	mov    %rax,0x10(%r12)
+    127a:	movups (%rsp),%xmm0
+    127e:	movups %xmm0,(%r12)
+    1283:	inc    %r14
+    1286:	cmp    %r14,%rbx
+    1289:	je     12bf <from_int(unsigned long)+0x6f>
+    128b:	mov    %r15,%rdi
+    128e:	mov    %r14,%rsi
+    1291:	call   10a0 <std::__1::to_string(unsigned long)@plt>
+    1296:	mov    %r14d,%eax
+    1299:	and    $0x3ff,%eax
+    129e:	mov    0x2dbb(%rip),%rcx        # 4060 <buf>
+    12a5:	lea    (%rax,%rax,2),%rax
+    12a9:	lea    (%rcx,%rax,8),%r12
+    12ad:	testb  $0x1,(%rcx,%rax,8)
+    12b1:	je     1270 <from_int(unsigned long)+0x20>
+    12b3:	mov    0x10(%r12),%rdi
+    12b8:	call   1060 <operator delete(void*)@plt>
+    12bd:	jmp    1270 <from_int(unsigned long)+0x20>
+    12bf:	add    $0x18,%rsp
+    12c3:	pop    %rbx
+    12c4:	pop    %r12
+    12c6:	pop    %r14
+    12c8:	pop    %r15
+    12ca:	ret
+    12cb:	nopl   0x0(%rax,%rax,1)
+

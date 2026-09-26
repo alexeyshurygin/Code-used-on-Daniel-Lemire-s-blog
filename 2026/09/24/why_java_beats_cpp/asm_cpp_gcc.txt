@@ -1,0 +1,334 @@
+# objdump of from_int in cpp_gcc (bench.cpp -O3)
+0000000000001870 <from_int(unsigned long)>:
+    1870:	endbr64
+    1874:	push   %r14
+    1876:	push   %r13
+    1878:	push   %r12
+    187a:	push   %rbp
+    187b:	push   %rbx
+    187c:	sub    $0x100,%rsp
+    1883:	mov    %fs:0x28,%rax
+    188c:	mov    %rax,0xf8(%rsp)
+    1894:	xor    %eax,%eax
+    1896:	test   %rdi,%rdi
+    1899:	je     1b42 <from_int(unsigned long)+0x2d2>
+    189f:	mov    %rdi,%rbx
+    18a2:	xor    %r12d,%r12d
+    18a5:	lea    0x10(%rsp),%r13
+    18aa:	lea    0x276f(%rip),%rbp        # 4020 <buf[abi:cxx11]>
+    18b1:	nopl   0x0(%rax)
+    18b8:	cmp    $0x9,%r12
+    18bc:	jbe    1cf7 <from_int(unsigned long)+0x487>
+    18c2:	cmp    $0x63,%r12
+    18c6:	jbe    1df0 <from_int(unsigned long)+0x580>
+    18cc:	cmp    $0x3e7,%r12
+    18d3:	jbe    1e1e <from_int(unsigned long)+0x5ae>
+    18d9:	cmp    $0x270f,%r12
+    18e0:	jbe    1e07 <from_int(unsigned long)+0x597>
+    18e6:	mov    %r12,%rdx
+    18e9:	mov    $0x1,%esi
+    18ee:	movabs $0x346dc5d63886594b,%rdi
+    18f8:	jmp    1927 <from_int(unsigned long)+0xb7>
+    18fa:	nopw   0x0(%rax,%rax,1)
+    1900:	cmp    $0xf423f,%rcx
+    1907:	jbe    1cb0 <from_int(unsigned long)+0x440>
+    190d:	cmp    $0x98967f,%rcx
+    1914:	jbe    1cc0 <from_int(unsigned long)+0x450>
+    191a:	cmp    $0x5f5e0ff,%rcx
+    1921:	jbe    1cd0 <from_int(unsigned long)+0x460>
+    1927:	mov    %rdx,%rax
+    192a:	mov    %rdx,%rcx
+    192d:	mul    %rdi
+    1930:	mov    %esi,%eax
+    1932:	add    $0x4,%esi
+    1935:	shr    $0xb,%rdx
+    1939:	cmp    $0x1869f,%rcx
+    1940:	ja     1900 <from_int(unsigned long)+0x90>
+    1942:	mov    %r13,(%rsp)
+    1946:	mov    %esi,%r14d
+    1949:	cmp    $0xf,%esi
+    194c:	ja     1b70 <from_int(unsigned long)+0x300>
+    1952:	test   %r14,%r14
+    1955:	jne    1d5e <from_int(unsigned long)+0x4ee>
+    195b:	movdqa 0x73d(%rip),%xmm0        # 20a0 <_IO_stdin_used+0xa0>
+    1963:	movdqa 0x6f5(%rip),%xmm1        # 2060 <_IO_stdin_used+0x60>
+    196b:	movq   $0x0,0x8(%rsp)
+    1974:	mov    %r13,%rdi
+    1977:	movdqa 0x6f1(%rip),%xmm2        # 2070 <_IO_stdin_used+0x70>
+    197f:	movb   $0x0,0x10(%rsp)
+    1984:	mov    $0xffffffff,%esi
+    1989:	movaps %xmm0,0x60(%rsp)
+    198e:	movdqa 0x71a(%rip),%xmm0        # 20b0 <_IO_stdin_used+0xb0>
+    1996:	movdqa 0x6e2(%rip),%xmm3        # 2080 <_IO_stdin_used+0x80>
+    199e:	movdqa 0x6ea(%rip),%xmm4        # 2090 <_IO_stdin_used+0x90>
+    19a6:	movaps %xmm1,0x20(%rsp)
+    19ab:	movaps %xmm0,0x70(%rsp)
+    19b0:	movdqa 0x708(%rip),%xmm0        # 20c0 <_IO_stdin_used+0xc0>
+    19b8:	movaps %xmm2,0x30(%rsp)
+    19bd:	movaps %xmm0,0x80(%rsp)
+    19c5:	movdqa 0x703(%rip),%xmm0        # 20d0 <_IO_stdin_used+0xd0>
+    19cd:	movaps %xmm3,0x40(%rsp)
+    19d2:	movaps %xmm0,0x90(%rsp)
+    19da:	movdqa 0x6fe(%rip),%xmm0        # 20e0 <_IO_stdin_used+0xe0>
+    19e2:	movaps %xmm4,0x50(%rsp)
+    19e7:	movaps %xmm0,0xa0(%rsp)
+    19ef:	movdqa 0x6f9(%rip),%xmm0        # 20f0 <_IO_stdin_used+0xf0>
+    19f7:	movaps %xmm0,0xb0(%rsp)
+    19ff:	movdqa 0x6f9(%rip),%xmm0        # 2100 <_IO_stdin_used+0x100>
+    1a07:	movaps %xmm0,0xc0(%rsp)
+    1a0f:	movdqa 0x6f9(%rip),%xmm0        # 2110 <_IO_stdin_used+0x110>
+    1a17:	movaps %xmm0,0xd0(%rsp)
+    1a1f:	movdqa 0x6f9(%rip),%xmm0        # 2120 <_IO_stdin_used+0x120>
+    1a27:	movups %xmm0,0xd9(%rsp)
+    1a2f:	movabs $0x28f5c28f5c28f5c3,%r8
+    1a39:	mov    %r12,%rcx
+    1a3c:	nopl   0x0(%rax)
+    1a40:	mov    %rcx,%rdx
+    1a43:	shr    $0x2,%rdx
+    1a47:	mov    %rdx,%rax
+    1a4a:	mul    %r8
+    1a4d:	mov    %rcx,%rax
+    1a50:	mov    %rdx,%r9
+    1a53:	and    $0xfffffffffffffffc,%rdx
+    1a57:	shr    $0x2,%r9
+    1a5b:	add    %r9,%rdx
+    1a5e:	lea    (%rdx,%rdx,4),%rdx
+    1a62:	shl    $0x2,%rdx
+    1a66:	sub    %rdx,%rax
+    1a69:	mov    %rcx,%rdx
+    1a6c:	mov    %r9,%rcx
+    1a6f:	mov    %esi,%r9d
+    1a72:	add    %rax,%rax
+    1a75:	movzbl 0x21(%rsp,%rax,1),%r10d
+    1a7b:	movzbl 0x20(%rsp,%rax,1),%eax
+    1a80:	mov    %r10b,(%rdi,%r9,1)
+    1a84:	lea    -0x1(%rsi),%r9d
+    1a88:	sub    $0x2,%esi
+    1a8b:	mov    %al,(%rdi,%r9,1)
+    1a8f:	cmp    $0x270f,%rdx
+    1a96:	ja     1a40 <from_int(unsigned long)+0x1d0>
+    1a98:	lea    0x30(%rcx),%eax
+    1a9b:	cmp    $0x9,%rcx
+    1a9f:	jbe    1ab1 <from_int(unsigned long)+0x241>
+    1aa1:	add    %rcx,%rcx
+    1aa4:	movzbl 0x21(%rsp,%rcx,1),%eax
+    1aa9:	mov    %al,0x1(%rdi)
+    1aac:	movzbl 0x20(%rsp,%rcx,1),%eax
+    1ab1:	mov    %al,(%rdi)
+    1ab3:	mov    %r12,%rax
+    1ab6:	and    $0x3ff,%eax
+    1abb:	shl    $0x5,%rax
+    1abf:	add    0x0(%rbp),%rax
+    1ac3:	mov    (%rax),%rdx
+    1ac6:	lea    0x10(%rax),%rcx
+    1aca:	cmp    %rcx,%rdx
+    1acd:	mov    %rdx,%rsi
+    1ad0:	mov    (%rsp),%rcx
+    1ad4:	je     1c80 <from_int(unsigned long)+0x410>
+    1ada:	cmp    %r13,%rcx
+    1add:	je     1d00 <from_int(unsigned long)+0x490>
+    1ae3:	mov    0x8(%rsp),%rsi
+    1ae8:	mov    0x10(%rax),%rdi
+    1aec:	mov    %rcx,(%rax)
+    1aef:	mov    %rsi,0x8(%rax)
+    1af3:	mov    0x10(%rsp),%rcx
+    1af8:	mov    %rcx,0x10(%rax)
+    1afc:	test   %rdx,%rdx
+    1aff:	je     1c9a <from_int(unsigned long)+0x42a>
+    1b05:	mov    %rdx,(%rsp)
+    1b09:	mov    %rdi,0x10(%rsp)
+    1b0e:	movq   $0x0,0x8(%rsp)
+    1b17:	movb   $0x0,(%rdx)
+    1b1a:	mov    (%rsp),%rdi
+    1b1e:	cmp    %r13,%rdi
+    1b21:	je     1ce0 <from_int(unsigned long)+0x470>
+    1b27:	mov    0x10(%rsp),%rax
+    1b2c:	add    $0x1,%r12
+    1b30:	lea    0x1(%rax),%rsi
+    1b34:	call   10f0 <operator delete(void*, unsigned long)@plt>
+    1b39:	cmp    %r12,%rbx
+    1b3c:	jne    18b8 <from_int(unsigned long)+0x48>
+    1b42:	mov    0xf8(%rsp),%rax
+    1b4a:	sub    %fs:0x28,%rax
+    1b53:	jne    1e71 <from_int(unsigned long)+0x601>
+    1b59:	add    $0x100,%rsp
+    1b60:	pop    %rbx
+    1b61:	pop    %rbp
+    1b62:	pop    %r12
+    1b64:	pop    %r13
+    1b66:	pop    %r14
+    1b68:	ret
+    1b69:	nopl   0x0(%rax)
+    1b70:	lea    0x1(%r14),%rdi
+    1b74:	call   10e0 <operator new(unsigned long)@plt>
+    1b79:	mov    %r14,0x10(%rsp)
+    1b7e:	mov    %rax,(%rsp)
+    1b82:	mov    %rax,%rdi
+    1b85:	mov    %r14,%rdx
+    1b88:	xor    %esi,%esi
+    1b8a:	call   10c0 <memset@plt>
+    1b8f:	mov    (%rsp),%rax
+    1b93:	add    %r14,%rax
+    1b96:	movdqa 0x502(%rip),%xmm0        # 20a0 <_IO_stdin_used+0xa0>
+    1b9e:	mov    %r14,0x8(%rsp)
+    1ba3:	mov    %r12,%rcx
+    1ba6:	movdqa 0x4b2(%rip),%xmm5        # 2060 <_IO_stdin_used+0x60>
+    1bae:	movb   $0x0,(%rax)
+    1bb1:	movaps %xmm0,0x60(%rsp)
+    1bb6:	movdqa 0x4f2(%rip),%xmm0        # 20b0 <_IO_stdin_used+0xb0>
+    1bbe:	movdqa 0x4aa(%rip),%xmm6        # 2070 <_IO_stdin_used+0x70>
+    1bc6:	mov    0x8(%rsp),%eax
+    1bca:	movaps %xmm5,0x20(%rsp)
+    1bcf:	movdqa 0x4a9(%rip),%xmm7        # 2080 <_IO_stdin_used+0x80>
+    1bd7:	movaps %xmm0,0x70(%rsp)
+    1bdc:	movdqa 0x4dc(%rip),%xmm0        # 20c0 <_IO_stdin_used+0xc0>
+    1be4:	mov    (%rsp),%rdi
+    1be8:	movdqa 0x4a0(%rip),%xmm5        # 2090 <_IO_stdin_used+0x90>
+    1bf0:	movaps %xmm6,0x30(%rsp)
+    1bf5:	lea    -0x1(%rax),%esi
+    1bf8:	movaps %xmm0,0x80(%rsp)
+    1c00:	movdqa 0x4c8(%rip),%xmm0        # 20d0 <_IO_stdin_used+0xd0>
+    1c08:	movaps %xmm7,0x40(%rsp)
+    1c0d:	movaps %xmm0,0x90(%rsp)
+    1c15:	movdqa 0x4c3(%rip),%xmm0        # 20e0 <_IO_stdin_used+0xe0>
+    1c1d:	movaps %xmm5,0x50(%rsp)
+    1c22:	movaps %xmm0,0xa0(%rsp)
+    1c2a:	movdqa 0x4be(%rip),%xmm0        # 20f0 <_IO_stdin_used+0xf0>
+    1c32:	movaps %xmm0,0xb0(%rsp)
+    1c3a:	movdqa 0x4be(%rip),%xmm0        # 2100 <_IO_stdin_used+0x100>
+    1c42:	movaps %xmm0,0xc0(%rsp)
+    1c4a:	movdqa 0x4be(%rip),%xmm0        # 2110 <_IO_stdin_used+0x110>
+    1c52:	movaps %xmm0,0xd0(%rsp)
+    1c5a:	movdqa 0x4be(%rip),%xmm0        # 2120 <_IO_stdin_used+0x120>
+    1c62:	movups %xmm0,0xd9(%rsp)
+    1c6a:	cmp    $0x63,%r12
+    1c6e:	ja     1a2f <from_int(unsigned long)+0x1bf>
+    1c74:	jmp    1a98 <from_int(unsigned long)+0x228>
+    1c79:	nopl   0x0(%rax)
+    1c80:	cmp    %r13,%rcx
+    1c83:	je     1d00 <from_int(unsigned long)+0x490>
+    1c85:	mov    0x8(%rsp),%rdx
+    1c8a:	mov    %rcx,(%rax)
+    1c8d:	mov    %rdx,0x8(%rax)
+    1c91:	mov    0x10(%rsp),%rdx
+    1c96:	mov    %rdx,0x10(%rax)
+    1c9a:	mov    %r13,(%rsp)
+    1c9e:	mov    %r13,%rdx
+    1ca1:	jmp    1b0e <from_int(unsigned long)+0x29e>
+    1ca6:	cs nopw 0x0(%rax,%rax,1)
+    1cb0:	lea    0x5(%rax),%esi
+    1cb3:	jmp    1942 <from_int(unsigned long)+0xd2>
+    1cb8:	nopl   0x0(%rax,%rax,1)
+    1cc0:	lea    0x6(%rax),%esi
+    1cc3:	jmp    1942 <from_int(unsigned long)+0xd2>
+    1cc8:	nopl   0x0(%rax,%rax,1)
+    1cd0:	lea    0x7(%rax),%esi
+    1cd3:	jmp    1942 <from_int(unsigned long)+0xd2>
+    1cd8:	nopl   0x0(%rax,%rax,1)
+    1ce0:	add    $0x1,%r12
+    1ce4:	cmp    %r12,%rbx
+    1ce7:	je     1b42 <from_int(unsigned long)+0x2d2>
+    1ced:	cmp    $0x9,%r12
+    1cf1:	ja     18c2 <from_int(unsigned long)+0x52>
+    1cf7:	mov    %r13,(%rsp)
+    1cfb:	jmp    1d68 <from_int(unsigned long)+0x4f8>
+    1cfd:	nopl   (%rax)
+    1d00:	mov    0x8(%rsp),%rcx
+    1d05:	mov    %rsp,%r8
+    1d08:	mov    %rcx,%rdi
+    1d0b:	cmp    %r8,%rax
+    1d0e:	je     1c9e <from_int(unsigned long)+0x42e>
+    1d10:	test   %rcx,%rcx
+    1d13:	je     1d4d <from_int(unsigned long)+0x4dd>
+    1d15:	cmp    $0x1,%rcx
+    1d19:	je     1d80 <from_int(unsigned long)+0x510>
+    1d1b:	mov    %ecx,%edx
+    1d1d:	cmp    $0x8,%ecx
+    1d20:	jae    1da0 <from_int(unsigned long)+0x530>
+    1d22:	test   $0x4,%cl
+    1d25:	jne    1e35 <from_int(unsigned long)+0x5c5>
+    1d2b:	test   %edx,%edx
+    1d2d:	je     1d47 <from_int(unsigned long)+0x4d7>
+    1d2f:	movzbl 0x0(%r13),%ecx
+    1d34:	mov    %cl,(%rsi)
+    1d36:	test   $0x2,%dl
+    1d39:	jne    1e59 <from_int(unsigned long)+0x5e9>
+    1d3f:	mov    0x8(%rsp),%rdi
+    1d44:	mov    (%rax),%rsi
+    1d47:	mov    %rdi,%rcx
+    1d4a:	mov    %rsi,%rdx
+    1d4d:	mov    %rcx,0x8(%rax)
+    1d51:	movb   $0x0,(%rdx,%rcx,1)
+    1d55:	mov    (%rsp),%rdx
+    1d59:	jmp    1b0e <from_int(unsigned long)+0x29e>
+    1d5e:	cmp    $0x1,%r14
+    1d62:	jne    1e51 <from_int(unsigned long)+0x5e1>
+    1d68:	mov    (%rsp),%rax
+    1d6c:	movb   $0x0,0x10(%rsp)
+    1d71:	mov    $0x1,%r14d
+    1d77:	add    $0x1,%rax
+    1d7b:	jmp    1b96 <from_int(unsigned long)+0x326>
+    1d80:	movzbl 0x10(%rsp),%edx
+    1d85:	mov    %dl,(%rsi)
+    1d87:	mov    0x8(%rsp),%rcx
+    1d8c:	mov    (%rax),%rdx
+    1d8f:	mov    %rcx,0x8(%rax)
+    1d93:	movb   $0x0,(%rdx,%rcx,1)
+    1d97:	mov    (%rsp),%rdx
+    1d9b:	jmp    1b0e <from_int(unsigned long)+0x29e>
+    1da0:	mov    0x0(%r13),%rdx
+    1da4:	lea    0x8(%rsi),%r8
+    1da8:	mov    %r13,%r9
+    1dab:	and    $0xfffffffffffffff8,%r8
+    1daf:	mov    %rdx,(%rsi)
+    1db2:	mov    %ecx,%edx
+    1db4:	mov    -0x8(%r13,%rdx,1),%rcx
+    1db9:	mov    %rcx,-0x8(%rsi,%rdx,1)
+    1dbe:	sub    %r8,%rsi
+    1dc1:	mov    %rsi,%rdx
+    1dc4:	sub    %rsi,%r9
+    1dc7:	add    %edi,%edx
+    1dc9:	and    $0xfffffff8,%edx
+    1dcc:	cmp    $0x8,%edx
+    1dcf:	jb     1d3f <from_int(unsigned long)+0x4cf>
+    1dd5:	and    $0xfffffff8,%edx
+    1dd8:	xor    %ecx,%ecx
+    1dda:	mov    %ecx,%esi
+    1ddc:	add    $0x8,%ecx
+    1ddf:	mov    (%r9,%rsi,1),%rdi
+    1de3:	mov    %rdi,(%r8,%rsi,1)
+    1de7:	cmp    %edx,%ecx
+    1de9:	jb     1dda <from_int(unsigned long)+0x56a>
+    1deb:	jmp    1d3f <from_int(unsigned long)+0x4cf>
+    1df0:	mov    %r13,(%rsp)
+    1df4:	lea    0x10(%rsp),%r13
+    1df9:	mov    $0x2,%r14d
+    1dff:	mov    %r13,%rdi
+    1e02:	jmp    1b85 <from_int(unsigned long)+0x315>
+    1e07:	mov    %r13,(%rsp)
+    1e0b:	lea    0x10(%rsp),%r13
+    1e10:	mov    $0x4,%r14d
+    1e16:	mov    %r13,%rdi
+    1e19:	jmp    1b85 <from_int(unsigned long)+0x315>
+    1e1e:	mov    %r13,(%rsp)
+    1e22:	lea    0x10(%rsp),%r13
+    1e27:	mov    $0x3,%r14d
+    1e2d:	mov    %r13,%rdi
+    1e30:	jmp    1b85 <from_int(unsigned long)+0x315>
+    1e35:	mov    0x0(%r13),%ecx
+    1e39:	mov    %ecx,(%rsi)
+    1e3b:	mov    -0x4(%r13,%rdx,1),%ecx
+    1e40:	mov    %ecx,-0x4(%rsi,%rdx,1)
+    1e44:	mov    0x8(%rsp),%rdi
+    1e49:	mov    (%rax),%rsi
+    1e4c:	jmp    1d47 <from_int(unsigned long)+0x4d7>
+    1e51:	mov    %r13,%rdi
+    1e54:	jmp    1b85 <from_int(unsigned long)+0x315>
+    1e59:	movzwl -0x2(%r13,%rdx,1),%ecx
+    1e5f:	mov    %cx,-0x2(%rsi,%rdx,1)
+    1e64:	mov    0x8(%rsp),%rdi
+    1e69:	mov    (%rax),%rsi
+    1e6c:	jmp    1d47 <from_int(unsigned long)+0x4d7>
+    1e71:	call   1100 <__stack_chk_fail@plt>
+    1e76:	cs nopw 0x0(%rax,%rax,1)
+

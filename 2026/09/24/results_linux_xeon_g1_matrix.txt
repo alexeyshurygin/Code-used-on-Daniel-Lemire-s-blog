@@ -1,0 +1,16 @@
+# Integer.toString(i) ns/string, best of 3 JVM launches; COH = -XX:±UseCompactObjectHeaders
+jdk-25.0.4.1+1 G1 COH- 14.02
+jdk-25.0.4.1+1 G1 COH+ 14.25
+jdk-25.0.4.1+1 Serial COH- 8.32
+jdk-25.0.4.1+1 Serial COH+ 9.03
+jdk-26.0.2.1 G1 COH- 10.45
+jdk-26.0.2.1 G1 COH+ 10.34
+jdk-26.0.2.1 Serial COH- 11.35
+jdk-26.0.2.1 Serial COH+ 12.18
+jdk-27 G1 COH- 10.46
+jdk-27 G1 COH+ 10.59
+jdk-27 Serial COH- 11.68
+jdk-27 Serial COH+ 12.44
+jdk-25.0.2(oracle) G1 COH- 14.13
+jdk-25.0.2(oracle) Serial COH- 8.10
+# bytes allocated per 8-digit string (JDK 27): 48.0 with COH- and COH+
