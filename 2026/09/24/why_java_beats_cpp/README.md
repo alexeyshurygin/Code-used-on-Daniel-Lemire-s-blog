@@ -15,7 +15,9 @@ into the new `byte[]`. Java zeroes that array too, but in 6 inline instructions.
 come from a bump-pointer allocation in a thread-local buffer (TLAB). The only other work per
 string is a 4-byte compressed-pointer store and G1's JDK 26+ card-mark barrier, together about
 18 instructions with no fence and no call. When C++ also
-writes the digits straight into the vector slot, it takes **6.0 ns**, well ahead of Java.
+writes the digits straight into the vector slot, it takes **6.0 ns**. That variant doesn't create
+a new string, though; it overwrites an existing one in place. So it isn't a fair entry in the
+benchmark. It shows where the original C++ loop spends its time (section 4).
 
 The machine: KVM guest, 4 vCPUs of an Intel Xeon (family 6, model 207, Emerald Rapids), measured
 at 3.4 GHz. The CPU supports AVX-512. There are no hardware performance counters in the guest.
@@ -104,9 +106,19 @@ straight-line block with no call or return, and it runs 5 cycles faster.
 
 ## 4. Isolating each cost
 
-`direct.cpp` keeps the C++ semantics (a `std::vector<std::string>` holding the same strings), but
-writes the digits straight into the slot's own SSO buffer with C++23 `resize_and_overwrite` +
-`std::to_chars`. That removes the temporary, the zero-fill and the move:
+`direct.cpp` ends with the same `std::vector<std::string>` contents. But instead of building a new
+string, it writes the digits straight into the existing slot's SSO buffer with C++23
+`resize_and_overwrite` + `std::to_chars`. That removes the temporary, the zero-fill and the move:
+
+```cpp
+// original: build a temporary, then move-assign it into the slot
+buf[i & 1023] = std::to_string(i);
+
+// direct: overwrite the slot's own characters in place
+buf[i & 1023].resize_and_overwrite(20, [i](char *p, size_t m) {
+  return size_t(std::to_chars(p, p + m, i).ptr - p);
+});
+```
 
 | build | `buf[k] = to_string(i)` | direct into `buf[k]` |
 |---|---:|---:|
@@ -114,11 +126,25 @@ writes the digits straight into the slot's own SSO buffer with C++23 `resize_and
 | clang + libstdc++ | 10.86 | **6.00** |
 | clang + libc++ | 13.14 | 6.62 |
 
-About half of C++'s time goes to the temporary-and-move, not to formatting digits. Java has no
-cheaper way to do the conversion. On the Java side (`JavaParts.java`), the same JDK digit code
-into a preallocated buffer takes 8.7 ns. The full `Integer.toString` plus store takes 10.95 ns. So
-allocating the two objects and storing the reference adds only ~2 ns, and much of that overlaps
-with the digit math under out-of-order execution.
+About half of C++'s time goes to the temporary-and-move, not to formatting digits.
+
+**This is a diagnostic, not a fair entry in the benchmark.** The direct variant creates no new
+string; it reuses storage that already exists. The original C++ loop and Java's
+`Integer.toString` both produce a brand-new string every time, and the benchmark measures that.
+Compare like with like:
+
+| work per number | C++ (clang + libstdc++) | Java 27 | faster |
+|---|---:|---:|---|
+| conversion only, into existing storage | 6.0 (`direct.cpp`) | ~8.7 (`JavaParts.java` #2) | C++ |
+| a new string each time (the benchmark) | 12.0 (`bench.cpp`) | 10.5 (`Bench.java`) | **Java** |
+| cost of making it a *new* string | ~5–6 | ~2 | Java |
+
+The Java conversion-only figure is approximate. It uses the same JDK digit code
+(`DecimalDigits`), but it also pays an extra array-of-arrays lookup per string. C++ formats the
+digits faster, but its way of producing a new string (temporary + `memset` + `memcpy` + destructor
+checks) costs about three times Java's way (bump allocation + one reference store). That's why
+Java wins the benchmark as defined. Some of Java's ~2 ns overlaps with the digit math under
+out-of-order execution.
 
 (`parts.cpp` has a finer split. The parts overlap under out-of-order execution, so their times
 don't add up exactly: clang + libstdc++ `to_chars` alone takes 5.1 ns, `to_string` into an unused

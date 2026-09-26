@@ -103,8 +103,11 @@ in C++ is faster than Java's. What costs C++ is `std::to_string` returning a tem
 gets move-assigned into the vector slot. With libstdc++ that means a `memset` call (zero-filling
 the new string) and a `memcpy` call (copying the SSO bytes) for every string. HotSpot inlines the
 whole `Integer.toString`, writes the digits once into a bump-allocated `byte[]`, and stores a
-4-byte reference. Writing the digits directly into the vector slot (`resize_and_overwrite`) brings
-C++ down to 6.0 ns.
+4-byte reference. As a diagnostic, writing the digits directly into the existing vector slot
+(`resize_and_overwrite`) brings C++ down to 6.0 ns. That variant creates no new string, so it
+isn't a fair benchmark entry, but it shows that about half of the original C++ time goes to the
+temporary and the copy. For the benchmark as defined, a new string each time, Java 27 is faster
+on this machine.
 
 ## Other observations
 
