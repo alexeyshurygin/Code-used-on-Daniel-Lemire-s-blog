@@ -1,4 +1,4 @@
-# Plots Integer.toString(i) across JDK releases (default G1 collector)
+# Plots Integer.toString(i) across JDK releases (21, 25, 26, 27) (default G1 collector)
 # from results_linux_xeon_java_versions.txt, in the style of plot.py.
 import re
 import matplotlib.pyplot as plt

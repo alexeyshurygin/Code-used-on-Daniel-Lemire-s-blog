@@ -31,6 +31,22 @@ Java 25.0.4.1 (OpenJDK 64-Bit Server VM, ZGC Minor Cycles)
 Integer.toString(i)        11.08 ns/string      90.2 M/s   (check 8192)
 "" + i                     14.39 ns/string      69.5 M/s   (check 8192)
 # -XX:+UseG1GC
+Java 26.0.2.1 (OpenJDK 64-Bit Server VM, G1 Young Generation)
+Integer.toString(i)        10.63 ns/string      94.0 M/s   (check 8192)
+"" + i                     10.77 ns/string      92.9 M/s   (check 8192)
+# -XX:+UseParallelGC
+Java 26.0.2.1 (OpenJDK 64-Bit Server VM, PS MarkSweep)
+Integer.toString(i)        10.62 ns/string      94.2 M/s   (check 8192)
+"" + i                     10.47 ns/string      95.5 M/s   (check 8192)
+# -XX:+UseSerialGC
+Java 26.0.2.1 (OpenJDK 64-Bit Server VM, Copy)
+Integer.toString(i)        12.28 ns/string      81.5 M/s   (check 8192)
+"" + i                     12.65 ns/string      79.1 M/s   (check 8192)
+# -XX:+UseZGC
+Java 26.0.2.1 (OpenJDK 64-Bit Server VM, ZGC Minor Cycles)
+Integer.toString(i)        13.23 ns/string      75.6 M/s   (check 8192)
+"" + i                     11.47 ns/string      87.2 M/s   (check 8192)
+# -XX:+UseG1GC
 Java 27 (OpenJDK 64-Bit Server VM, G1 Young Generation)
 Integer.toString(i)        10.39 ns/string      96.2 M/s   (check 8192)
 "" + i                     10.26 ns/string      97.4 M/s   (check 8192)
